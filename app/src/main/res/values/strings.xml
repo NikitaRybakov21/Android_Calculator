@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Android_Calculator</string>
+    <string name="app_name">Math</string>
     <string name="_4">4</string>
     <string name="_9">9</string>
     <string name="_1">1</string>
@@ -10,13 +10,13 @@
     <string name="_0">0</string>
     <string name="_7">7</string>
     <string name="_8">8</string>
-    <string name="c">C</string>
-    <string name="PM">*</string>
-    <string name="M">-</string>
-    <string name="R">=</string>
-    <string name="P">+</string>
-    <string name="D">/</string>
-    <string name="T">.</string>
+    <string name="clear">C</string>
+    <string name="multiply">*</string>
+    <string name="minus">-</string>
+    <string name="equally">=</string>
+    <string name="plus">+</string>
+    <string name="div">/</string>
+    <string name="dot">.</string>
     <string name="cos">Cos</string>
     <string name="sin">Sin</string>
     <string name="trigonometry">trigonometry</string>

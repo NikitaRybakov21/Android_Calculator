@@ -154,7 +154,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="@string/c"
+        android:text="@string/clear"
         app:layout_constraintStart_toEndOf="@+id/buttonEqually"
         app:layout_constraintTop_toBottomOf="@+id/buttonDiv" />
 
@@ -164,7 +164,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="4dp"
-        android:text="@string/M"
+        android:text="@string/minus"
         app:layout_constraintStart_toEndOf="@+id/button0"
         app:layout_constraintTop_toBottomOf="@+id/buttonPlus" />
 
@@ -174,7 +174,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="56dp"
-        android:text="@string/PM"
+        android:text="@string/multiply"
         app:layout_constraintStart_toEndOf="@+id/buttonPlus"
         app:layout_constraintTop_toTopOf="@+id/textInput" />
 
@@ -184,7 +184,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="4dp"
-        android:text="@string/R"
+        android:text="@string/equally"
         app:layout_constraintStart_toEndOf="@+id/button0"
         app:layout_constraintTop_toBottomOf="@+id/buttonMinus" />
 
@@ -194,7 +194,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="68dp"
         android:layout_marginTop="56dp"
-        android:text="@string/P"
+        android:text="@string/plus"
         app:layout_constraintStart_toEndOf="@+id/button0"
         app:layout_constraintTop_toTopOf="@+id/textInput" />
 
@@ -204,7 +204,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
-        android:text="@string/D"
+        android:text="@string/div"
         app:layout_constraintStart_toEndOf="@+id/buttonMinus"
         app:layout_constraintTop_toBottomOf="@+id/buttonMultiply" />
 
@@ -214,7 +214,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="4dp"
         android:layout_marginBottom="4dp"
-        android:text="@string/T"
+        android:text="@string/dot"
         app:layout_constraintBottom_toTopOf="@+id/button0"
         app:layout_constraintStart_toEndOf="@+id/button6" />
 
