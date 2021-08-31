@@ -1,8 +1,6 @@
 package com.example.android_calculator;
 
 public class ModelCalculator implements AppInterface.InterfaceModel {
-    private final Presenter presenter;
-
     private double number = 0;
     private double numberDot  = 0;
     private double saveNumber = 0;
@@ -11,12 +9,8 @@ public class ModelCalculator implements AppInterface.InterfaceModel {
     private String flagAction;
     private int counter = 1;
 
-    public ModelCalculator(Presenter presenter) {
-        this.presenter = presenter;
-    }
-
     @Override
-    public void changesAction(String buttonName) {
+    public double changesAction(String buttonName) {
         if (buttonName.equals(".")) flagDot = true;
         if (buttonName.equals("+")) {
             saveNumber = number + (numberDot / counter);
@@ -40,27 +34,27 @@ public class ModelCalculator implements AppInterface.InterfaceModel {
         }
         if (buttonName.equals("C")) {
             reset();
-            presenter.clearText();
         }
         if (buttonName.equals("=")) {
             double saveNumber2 = number + (numberDot / counter);
 
-            if (flagAction.equals("+")) presenter.setAnswerText( plus(saveNumber, saveNumber2));
-            if (flagAction.equals("-")) presenter.setAnswerText( mines(saveNumber, saveNumber2));
-            if (flagAction.equals("*")) presenter.setAnswerText( multiply(saveNumber, saveNumber2));
-            if (flagAction.equals("/")) presenter.setAnswerText( div(saveNumber, saveNumber2));
+            if (flagAction.equals("+")) return plus(saveNumber, saveNumber2);
+            if (flagAction.equals("-")) return mines(saveNumber, saveNumber2);
+            if (flagAction.equals("*")) return multiply(saveNumber, saveNumber2);
+            if (flagAction.equals("/")) return div(saveNumber, saveNumber2);
         }
+        return 0;
     }
 
     @Override
-    public void changesNumber(int buttonName) {
+    public double changesNumber(int buttonName) {
         if (flagDot) {
             numberDot = numberDot * 10 + buttonName;
             counter   = counter   * 10;
         } else {
             number = number * 10 + buttonName;
         }
-        presenter.setText(number + (numberDot / counter),flagDot);
+        return number + (numberDot / counter);
     }
     private void reset() {
         number    = 0;
@@ -79,5 +73,10 @@ public class ModelCalculator implements AppInterface.InterfaceModel {
     }
     private double div(double a, double b) {
         return a / b;
+    }
+
+    @Override
+    public boolean getFlagDot(){
+        return flagDot;
     }
 }

@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
         if(theme.equals("DarkTheme")){
             setTheme(R.style.DarkTheme);
         }
-        if(theme.equals("LightTheme")){
+        if(theme.equals("LightTheme")) {
             setTheme(R.style.Theme_Android_Calculator);
         }
 
@@ -170,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
             @Override
             public void onClick(View view) {
                 presenter.pressedButtonActions("C");
+                clearText();
             }
         });
     }

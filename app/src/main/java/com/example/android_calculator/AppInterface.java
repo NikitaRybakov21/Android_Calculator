@@ -11,12 +11,12 @@ public interface AppInterface {
     interface InterfacePresenter{
         void pressedButtonActions(String buttonName);
         void pressedButtonNumber(int buttonName);
-        void clearText();
         void setText(double result,boolean flagDot);
         void setAnswerText(double result);
     }
     interface InterfaceModel{
-        void changesAction(String buttonName);
-        void changesNumber(int buttonName);
+        double changesAction(String buttonName);
+        double changesNumber(int buttonName);
+        boolean getFlagDot();
     }
 }
