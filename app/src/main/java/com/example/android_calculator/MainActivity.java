@@ -1,10 +1,12 @@
 package com.example.android_calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
@@ -18,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("onCreate");
         super.onCreate(savedInstanceState);
 
         sharedPreferences = getPreferences(MODE_PRIVATE);
@@ -32,8 +35,11 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.textInput);
-        textViewAnswer = findViewById(R.id.textViewAnswer);
+        if(savedInstanceState != null){
+            textView.setText(savedInstanceState.getString("STRING"));
+        }
 
+        textViewAnswer = findViewById(R.id.textViewAnswer);
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
         Button button3 = findViewById(R.id.button3);
@@ -188,6 +194,12 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("STRING",textView.getText().toString());
+    }
+
+    @Override
     public void outputAnswer(double result) {
         String num = Double.toString(result);
         textViewAnswer.setText(num);
@@ -203,4 +215,36 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
         sharedPreferences = getPreferences(MODE_PRIVATE);
         sharedPreferences.edit().putString(KEY_THEME,theme).apply();
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("onStart");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("onResume");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("onPause");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("onStop");
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("onDestroy");
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("onRestart");
+    }
+
 }

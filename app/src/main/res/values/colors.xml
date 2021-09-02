@@ -6,7 +6,9 @@
     <color name="teal_200">#5BACD1</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFF</color>
-    <color name="bekColor">#EFF3F1</color>
+    <color name="white">#9A2828</color>
+    <color name="bekColor">#1FA361</color>
     <color name="textAnswerView">#ED3838</color>
+    <color name="textButton">#000000</color>
+
 </resources>
