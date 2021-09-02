@@ -22,4 +22,6 @@
     <string name="trigonometry">trigonometry</string>
     <string name="tan">tan</string>
     <string name="cot">cot</string>
+    <string name="D">DarkTheme</string>
+    <string name="darkTheme">DarkTheme</string>
 </resources>

@@ -1,0 +1,10 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="DarkTheme" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">#FFA726</item>
+        <item name="android:windowBackground">#000000</item>
+
+    </style>
+
+</resources>
+
+

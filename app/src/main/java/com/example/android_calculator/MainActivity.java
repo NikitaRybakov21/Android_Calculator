@@ -1,25 +1,45 @@
 package com.example.android_calculator;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements AppInterface.InterfaceActivity {
     private TextView textViewAnswer;
     private TextView textView;
+    private SharedPreferences sharedPreferences;
+    private static final String KEY_THEME = "key_theme";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        System.out.println("onCreate");
         super.onCreate(savedInstanceState);
+
+        sharedPreferences = getPreferences(MODE_PRIVATE);
+        String theme = sharedPreferences.getString(KEY_THEME,"");
+        if(theme.equals("DarkTheme")){
+            setTheme(R.style.DarkTheme);
+        }
+        if(theme.equals("LightTheme")) {
+            setTheme(R.style.Theme_Android_Calculator);
+        }
+
         setContentView(R.layout.activity_main);
 
         textView = findViewById(R.id.textInput);
-        textViewAnswer = findViewById(R.id.textViewAnswer);
+        if(savedInstanceState != null){
+            textView.setText(savedInstanceState.getString("STRING"));
+        }
 
+        textViewAnswer = findViewById(R.id.textViewAnswer);
         Button button1 = findViewById(R.id.button1);
         Button button2 = findViewById(R.id.button2);
         Button button3 = findViewById(R.id.button3);
@@ -40,8 +60,22 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
         Button buttonMines = findViewById(R.id.buttonMinus);
         Button buttonDiv = findViewById(R.id.buttonDiv);
 
-        AppInterface.InterfacePresenter presenter = new Presenter(this);
+        Button switch1 = findViewById(R.id.switch1);
+        switch1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                boolean checked = ((Switch) view).isChecked();
+                if (checked){
+                    saveTheme("DarkTheme");
+                }
+                else{
+                    saveTheme("LightTheme");
+                }
+                recreate();
+            }
+        });
 
+        AppInterface.InterfacePresenter presenter = new Presenter(this);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,6 +176,7 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
             @Override
             public void onClick(View view) {
                 presenter.pressedButtonActions("C");
+                clearText();
             }
         });
     }
@@ -159,6 +194,12 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
     }
 
     @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("STRING",textView.getText().toString());
+    }
+
+    @Override
     public void outputAnswer(double result) {
         String num = Double.toString(result);
         textViewAnswer.setText(num);
@@ -169,4 +210,41 @@ public class MainActivity extends AppCompatActivity implements AppInterface.Inte
         textViewAnswer.setText("");
         textView.setText("");
     }
+
+    private void saveTheme(String theme){
+        sharedPreferences = getPreferences(MODE_PRIVATE);
+        sharedPreferences.edit().putString(KEY_THEME,theme).apply();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        System.out.println("onStart");
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        System.out.println("onResume");
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        System.out.println("onPause");
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        System.out.println("onStop");
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("onDestroy");
+    }
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        System.out.println("onRestart");
+    }
+
 }
